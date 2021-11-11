@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+* {
+	font-family: "Montserrat", sans-serif;
+}
+body {
+	background-color: #ff8303 !important;
+}
+@media only screen and (max-width: 992px) {
+	.navbar-brand {
+		transform: translateX(-50%);
+		left: 50%;
+		position: absolute;
+	}
+}
+.jumbotron {
+	position: relative;
+	width: 100%;
+	height: 500px;
+}
+.jumbotron:after {
+	content: "\A";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgb(27, 26, 23);
+	opacity: 0.375;
+}
+.jumbotron img {
+	object-fit: cover;
+}
+.jumbotron .text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	text-align: center;
+	z-index: 2;
+}
+.content {
+	background-color: #1b1a17;
+}
+.card-image {
+	height: 0;
+	padding-bottom: 56.25%; /* 16:9 */
+	position: relative;
+}
+.card-image img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.ImgContainer {
+	width: 100%;
+	height: 100%;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.ImgContainer img {
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+}
+body > .login {
+	background-color: #1b1a17 !important;
+}
+.form-floating {
+	color: black !important;
+}
+.login {
+	min-height: 100vh;
+}
+.form-login {
+	width: 100%;
+	max-width: 330px;
+	padding: 15px;
+	margin: auto;
+}
+.nav-pills .active {
+	background-color: #ff8303 !important;
+}
+.toggler {
+	background-color: #1b1a17 !important;
+	border-top-left-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;
+}
+.new-password {
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+}

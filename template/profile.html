@@ -1,0 +1,190 @@
+{%extends 'dashboard.html'%}
+{%block title%}
+<title>Profile | LANDME</title>
+{%endblock%}
+{%block active%}
+<ul class="nav nav-pills flex-column mb-auto">			
+	<li>
+		<a href="{%url 'dashboard' usr.username%}" class="nav-link text-white ">
+			<i class="bi bi-speedometer2 me-2"></i>
+			Dashboard
+		</a>
+	</li>
+	<li>
+		<a href="{%url 'userads' usr.username%}" class="nav-link text-white">
+			<i class="bi bi-badge-ad me-2"></i>
+			Ads
+		</a>
+	</li>
+	<li>
+		<a href="{%url 'profilesetting' usr.username%}" class="nav-link text-white active">
+			<i class="bi bi-person me-2"></i>
+			Profile
+		</a>
+	</li>
+	<li>
+		<a href="{%url 'personal' usr.username%}" class="nav-link text-white">
+			<i class="bi bi-person-lines-fill me-2"></i>
+			Personal Data
+		</a>
+	</li>
+	<li>
+		<a href="{%url 'account' usr.username%}" class="nav-link text-white">
+			<i class="bi bi-person-badge me-2"></i>
+			Account
+		</a>
+	</li>
+</ul>
+{%endblock%}
+{%block content%}
+			<div class="mainContent p-5" style="width: 100vw">
+				<div class="card p-3 mb-4" style="width: 100%">
+					<div class="card-body">
+						<h5 class="card-title">User Profile</h5>
+						<hr class="my-3" />
+						<form method="POST" enctype="multipart/form-data">
+						    {%csrf_token%}
+							<div class="mb-4">
+								<label for="PhotoProfile" class="form-label fw-bold"
+									>Photo Profile</label
+								><br />
+								<div class="d-flex gap-4 w-50">
+									<img
+										src="{{ user.profile.userpic.url }}"
+										alt=""
+										id="PhotoPreview"
+										width="100px"
+										height="100px"
+										style="object-fit: cover; aspect-ratio: 100/100"
+										class="mb-2 rounded-3 border"
+									/>
+									<input
+										class="form-control d-none"
+										accept="image/*"
+										type="file"
+										id="PhotoProfile"
+										value="{{ user.profile.userpic.url }}"
+										name="profilepic"
+									/>
+									<div class="d-flex flex-column">
+										<a
+											class="btn text-white mb-1"
+											style="
+												background-color: #1b1a17;
+												height: fit-content;
+												width: fit-content;
+											"
+											onclick="document.getElementById('PhotoProfile').click();"
+										>
+											Select Photo
+										</a>
+										<div class="fw-lighten text-muted">
+											Your Profile Image should have a ratio of 1:1 and no more
+											than 2MB in size.
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mb-4">
+								<label for="Fullname" class="form-label fw-bold"
+									>Fullname</label
+								>
+								<input
+									type="text"
+									class="form-control w-50"
+									id="Fullname"
+									placeholder="Fullname"
+									value="{{user.profile.fullname}}"
+									name="fullname"
+								/>
+							</div>
+							<div class="mb-4">
+								<label for="Username" class="form-label fw-bold"
+									>Username</label
+								>
+								<input
+									type="text"
+									class="form-control w-50"
+									id="Username"
+									placeholder="Username"
+									name="username"
+									value="{{user.username}}"
+								/>
+							</div>
+							<div class="mb-1">
+								<label for="Email" class="form-label fw-bold">Email</label>
+								<input
+									type="email"
+									class="form-control w-50"
+									id="Email"
+									placeholder="email@domain.com"
+									disabled
+									value="{{user.email}}"
+								/>
+							</div>
+							<div class="mb-4 fw-lighten text-muted">
+								You can change your email address via the
+								<a href="{%url 'account' usr.username%}">Account</a> menu.
+							</div>
+							<div class="mb-1">
+								<label for="Headline" class="form-label fw-bold"
+									>Headline</label
+								>
+								<input
+									type="text"
+									class="form-control w-50"
+									id="Headline"
+									placeholder="Example: Web Designer at PT. AAA"
+									value="{{user.profile.headline}}"
+									name="headline"
+									/>
+							</div>
+							<div class="mb-4 fw-lighten text-muted">
+								Can be filled with your main title or job title.
+							</div>
+							<div class="mb-1">
+								<label for="AboutMe" class="form-label fw-bold">About Me</label>
+								<textarea
+									class="form-control w-50"
+									id="AboutMe"
+									rows="3"
+									type="text" 
+									name="bio"
+									placeholder="Type something"
+								>{%if user.profile.bio != None%}{{user.profile.bio}}{%else%}{%endif%}</textarea>
+							</div>
+							<div class="mb-4 fw-lighten text-muted">
+								Write a short story about yourself.
+							</div>
+							<button
+								type="submit"
+								class="btn text-white"
+								style="background-color: #1b1a17"
+							>
+								Save Change
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			const chooseFile = document.getElementById("PhotoProfile");
+			const imgPreview = document.getElementById("PhotoPreview");
+
+			chooseFile.addEventListener("change", function () {
+				getImgData();
+			});
+
+			function getImgData() {
+				const files = chooseFile.files[0];
+				if (files) {
+					const fileReader = new FileReader();
+					fileReader.readAsDataURL(files);
+					fileReader.addEventListener("load", function () {
+						imgPreview.src = this.result;
+					});
+				}
+			}
+		</script>
+{%endblock%}

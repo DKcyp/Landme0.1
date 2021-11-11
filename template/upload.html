@@ -1,0 +1,19 @@
+<h1>Upload Page</h1>
+{%for x in messages%}
+<h3 style="color: red;">{{x}}</h3>
+{%endfor%}
+<h1>{{user.username}}{{usern}}</h1>
+<h1>{{idn}}</h1>
+<form method="POST" enctype="multipart/form-data">
+    {%csrf_token%}
+    <p>Title</p>
+    <input type="text" name="title">
+    <p>Detail</p>
+    <input type="text" name="detail"><br>
+    <p>Image</p>
+    <input type="file" name="imgup" accept="image/*"><br>
+    <input type="submit">
+</form>
+<button>
+    <a href="/">Home Page</a>
+</button>

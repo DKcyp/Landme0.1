@@ -1,0 +1,64 @@
+{%extends 'index.html'%}
+{%block title%}
+		<title>User | LANDME</title>
+{%endblock%}
+{%block jm%}
+{%endblock%}
+{%block page%}Advertisement of {{usr.username}}{%endblock%}
+{%block content%}
+				<div class="card p-3 mb-4" style="width: 100%">
+					<div class="card-body">
+						<div class="d-md-flex gap-3 mb-4 text-center text-md-start">
+							<img
+								src="{{ usr.profile.userpic.url }}"
+								class="rounded rounded-5"
+								alt=""
+								width="180"
+								height="180"
+							/>
+							<div class="">
+								<div class="fs-1"> {%if usr.profile.fullname != None %}{{usr.profile.fullname}}{%endif%}</div>
+								<table class="table text-start">
+									<tr>
+										<td width="100px">Headline</td>
+										<td width="10px">:</td>
+										<td>{{usr.profile.headline}}</td>
+									</tr>
+									<tr>
+										<td>About Me</td>
+										<td>:</td>
+										<td>{{usr.profile.bio}}</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<table class="table mb-0">
+							<tr>
+								<td width="200px">Username</td>
+								<td width="10px">:</td>
+								<td>{{usr.username}}</td>
+							</tr>
+							<tr>
+								<td>Email</td>
+								<td>:</td>
+								<td>{{usr.email}}</td>
+							</tr>
+							<tr>
+								<td>Phone Number</td>
+								<td>:</td>
+								<td>{%if usr.personaldata.phonenum != None %}{{usr.personaldata.phonenum}}{%endif%}</td>
+							</tr>
+							<tr>
+								<td>Whatsapp Number</td>
+								<td>:</td>
+								<td>{%if usr.personaldata.nowa != None %}{{usr.personaldata.nowa}}{%endif%}</td>
+							</tr>
+							<tr>
+								<td>Address</td>
+								<td>:</td>
+								<td>{%if usr.personaldata.address %}{{usr.personaldata.address}}{%endif%}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				{%endblock%}

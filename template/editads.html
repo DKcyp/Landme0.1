@@ -1,0 +1,162 @@
+{%extends 'dashboard.html'%}
+{%block title%}
+		<title>Edit Ads | LANDME</title>
+{%endblock%}
+{%block active%}
+<ul class="nav nav-pills flex-column mb-auto">			
+	<li>
+		<a href="{%url 'dashboard' usr.username%}" class="nav-link text-white ">
+			<i class="bi bi-speedometer2 me-2"></i>
+			Dashboard
+		</a>
+	</li>
+	<li>
+		<a href="{%url 'userads' usr.username%}" class="nav-link text-white active">
+			<i class="bi bi-badge-ad me-2"></i>
+			Ads
+		</a>
+	</li>
+	<li>
+		<a href="{%url 'profilesetting' usr.username%}" class="nav-link text-white">
+			<i class="bi bi-person me-2"></i>
+			Profile
+		</a>
+	</li>
+	<li>
+		<a href="{%url 'personal' usr.username%}" class="nav-link text-white">
+			<i class="bi bi-person-lines-fill me-2"></i>
+			Personal Data
+		</a>
+	</li>
+	<li>
+		<a href="{%url 'account' usr.username%}" class="nav-link text-white">
+			<i class="bi bi-person-badge me-2"></i>
+			Account
+		</a>
+	</li>
+</ul>
+{%endblock%}
+		{%block content%}
+			<div class="mainContent p-5" style="width: 100vw">
+				<div class="card p-3 mb-4" style="width: 100%">
+					<div class="card-body">
+						<h5 class="card-title">Edit Ads {{item.title}}</h5>
+						<hr class="my-3" />
+						{%for x in messages%}
+						<h3 style="color: red;">{{x}}</h3>
+						{%endfor%}
+						<form method="POST" enctype="multipart/form-data">
+					    {%csrf_token%}
+							<div class="mb-4">
+								<label for="Judul" class="form-label fw-bold">Judul</label>
+								<input
+									type="tel"
+									class="form-control w-50"
+									id="Judul"
+									placeholder="Judul"
+									value="{{item.title}}"
+									name="title"
+								/>
+							</div>
+							<div class="mb-4">
+								<label for="Gambar" class="form-label fw-bold">Gambar</label>
+								<input value="{{ item.images.url }}" class="form-control w-50" type="file" id="Gambar" name="imgup" accept="image/*"/>
+							</div>
+							<div class="mb-4">
+								<label for="Deskripsi" class="form-label fw-bold"
+									>Deskripsi</label
+								>
+								<textarea
+									class="form-control w-50"
+									id="Deskripsi"
+									rows="3"
+									placeholder="Deskripsi"
+									name="detail"
+								>{{item.detail}}</textarea>
+							</div>
+							<div class="mb-4">
+								<label for="Luas" class="form-label fw-bold">Luas Tanah</label>
+								<input
+									type="number"
+									class="form-control w-50"
+									id="Luas"
+									placeholder="Luas Tanah"
+									value="{{item.luas}}"
+									name="luas"
+								/>
+							</div>
+							<div class="mb-4">
+								<label for="Harga" class="form-label fw-bold"
+									>Harga/meter</label
+								>
+								<input
+									type="number"
+									class="form-control w-50"
+									id="Harga"
+									placeholder="Harga/meter"
+									value="{{item.harga}}"
+									name="harga"
+								/>
+							</div>
+							<div class="mb-4">
+								<label for="Lokasi" class="form-label fw-bold">Lokasi</label>
+								<input
+									type="text"
+									class="form-control w-50"
+									id="Lokasi"
+									placeholder="Lokasi"
+									value="{{item.lokasi}}"
+									name="lokasi"
+								/>
+							</div>
+							<div class="mb-4">
+								<label for="Keunikan" class="form-label fw-bold"
+									>Keunikan</label
+								>
+								<input
+									type="text"
+									class="form-control w-50"
+									id="Keunikan"
+									placeholder="Keunikan"
+									value="{{item.keunikan}}"
+									name="keunikan"
+								/>
+							</div>
+							<div class="mb-4">
+								<label for="Akses" class="form-label fw-bold"
+									>Akses Saluran Air</label
+								>
+								<input
+									type="text"
+									class="form-control w-50"
+									id="Akses"
+									placeholder="Akses Saluran Air"
+									value="{{item.aksesair}}"
+									name="aksesair"
+								/>
+							</div>
+							<div class="mb-4">
+								<label for="Sertifikasi" class="form-label fw-bold"
+									>Sertifikasi</label
+								>
+								<input
+									type="text"
+									class="form-control w-50"
+									id="Sertifikasi"
+									placeholder="Sertifikasi"
+									value="{{item.sertifikasi}}"
+									name="sertifikasi"
+								/>
+							</div>
+							<button
+								type="submit"
+								class="btn text-white"
+								style="background-color: #1b1a17"
+							>
+								Edit Ads
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+{%endblock%}

@@ -1,0 +1,36 @@
+<h1>{{usr.username}} Profile Setting Page</h1>
+{%for x in messages%}
+<h3 style="color: red;">{{x}}</h3>
+{%endfor%}
+<!-- <form method="POST" enctype="multipart/form-data">
+    {%csrf_token%}
+    {%for field in form%}
+    <p>{{field.label}}</p>
+    {{field}}
+    {%endfor%}
+    {%for field in profileform%}
+    <p>{{field.label}}</p>
+    {{field}}
+    {%endfor%}
+    <input type="submit">
+</form> -->
+<form method="POST" enctype="multipart/form-data">
+    {%csrf_token%}
+    <p>profilepic</p>
+    <img src="{{ user.profile.userpic.url }}"/><br>
+    <input value="{{ user.profile.userpic.url }}" type="file" name="profilepic" accept="image/*"><br>
+    <p>fullname</p>
+    <input value="{{user.profile.fullname}}" type="text" name="fullname">
+    <p>Username</p>
+    <input value="{{user.username}}" type="text" name="username">
+    <p>Email</p>
+    <p>{{user.email}}</p>
+    <p>headline</p>
+    <input value="{{user.profile.headline}}" type="text" name="headline">
+    <p>Bio</p>
+    <input value="{{user.profile.bio}}" type="text" name="bio"><br>
+
+    <p>pass</p>
+    <input value="{{user.password}}" type="text" name="pass">
+    <input type="submit">
+</form>

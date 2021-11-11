@@ -1,0 +1,18 @@
+
+
+<h1>REGISTER PAGE</h1>
+{%for x in messages%}
+<h5 style="color: red;">{{x}}</h5>
+{%endfor%}
+<form action="register" method="POST">
+    {% csrf_token %}
+    <p>username :</p>
+    <input type="text" name="username"/>
+    <p>email :</p>
+    <input type="text" name="email"/>
+    <p>password :</p>
+    <input type="text" name="password"/><br>
+    <p>Repeat password :</p>
+    <input type="text" name="repassword"/><br>
+    <input type="submit"/>
+</form>

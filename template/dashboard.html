@@ -1,0 +1,196 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="{% static 'stylenew.css' %}" />
+		<link
+			rel="shortcut icon"
+			href="{% static 'image/LogoMakr-7yocYi.png'%}"
+			type="image/x-icon"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+		/>
+		{%block title%}
+		<title>Dashboard | LANDME</title>
+		{%endblock%}
+	</head>
+	<body>
+		<main class="d-flex">
+			<div
+				class="
+					d-flex
+					flex-column flex-shrink-0
+					p-3
+					text-white
+					bg-dark
+					sticky-top
+				"
+				style="
+					width: 280px;
+					height: 100vh;
+					background-color: #1b1a17 !important;
+				"
+			>
+				<a
+					href="/"
+					class="
+						d-flex
+						align-items-center
+						mb-0
+						me-auto
+						text-white text-decoration-none
+					"
+				>
+					<img src="{% static 'image/LogoMakr-7yocYi.png'%}" class="bi me-2" width="40" />
+					<span class="fs-4" style="font-weight: 700">LANDME</span>
+				</a>
+				<hr />
+				{%block active%}
+				<ul class="nav nav-pills flex-column mb-auto">			
+					<li>
+						<a href="{%url 'dashboard' usr.username%}" class="nav-link text-white active">
+							<i class="bi bi-speedometer2 me-2"></i>
+							Dashboard
+						</a>
+					</li>
+					<li>
+						<a href="{%url 'userads' usr.username%}" class="nav-link text-white">
+							<i class="bi bi-badge-ad me-2"></i>
+							Ads
+						</a>
+					</li>
+					<li>
+						<a href="{%url 'profilesetting' usr.username%}" class="nav-link text-white">
+							<i class="bi bi-person me-2"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="{%url 'personal' usr.username%}" class="nav-link text-white">
+							<i class="bi bi-person-lines-fill me-2"></i>
+							Personal Data
+						</a>
+					</li>
+					<li>
+						<a href="{%url 'account' usr.username%}" class="nav-link text-white">
+							<i class="bi bi-person-badge me-2"></i>
+							Account
+						</a>
+					</li>
+				</ul>
+				{%endblock%}
+				<hr />
+				<div class="dropdown">
+					<a
+						href="{%url 'dashboard' usr.username%}"
+						class="
+							d-flex
+							align-items-center
+							text-white text-decoration-none
+							dropdown-toggle
+						"
+						id="dropdownUser1"
+						data-bs-toggle="dropdown"
+						aria-expanded="false"
+					>
+						<img
+							src="{{ user.profile.userpic.url }}"
+							alt="{{usr.username}}"
+							width="32"
+							height="32"
+							class="rounded-circle me-2"
+						/>
+						<strong>{{usr.username}}</strong>
+					</a>
+					<ul
+						class="dropdown-menu dropdown-menu-dark text-small shadow"
+						aria-labelledby="dropdownUser1"
+					>
+						<li><a class="dropdown-item" href="/upload">New ads...</a></li>
+						<li><a class="dropdown-item" href="{%url 'profilesetting' usr.username%}">Profile</a></li>
+						<li><a class="dropdown-item" href="{%url 'account' usr.username%}">Account</a></li>
+						<li><hr class="dropdown-divider" /></li>
+						<li><a class="dropdown-item" href="/logout">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+			{%block content%}
+			<div class="mainContent p-5" style="width: 100vw">
+				<div class="card p-3 mb-4" style="width: 100%">
+					<div class="card-body">
+						<div class="d-flex gap-3 mb-4">
+							<img
+								src="{{ user.profile.userpic.url }}"
+								class="rounded rounded-5"
+								alt=""
+								width="180"
+								height="180"
+							/>
+							<div class="">
+								<div class="fs-1">{%if user.profile.fullname != None %}{{user.profile.fullname}}{%else%}{{usr.username}}{%endif%}</div>
+								<table class="table">
+									<tr>
+										<td width="100px">Headline</td>
+										<td width="10px">:</td>
+										<td>{%if user.profile.headline != None %}{{user.profile.headline}}{%endif%}</td>
+									</tr>
+									<tr>
+										<td>About Me</td>
+										<td>:</td>
+										<td>
+											{%if user.profile.bio != None %}{{user.profile.bio}}{%endif%}
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<table class="table mb-0">
+							<tr>
+								<td width="200px">Username</td>
+								<td width="10px">:</td>
+								<td>{{usr.username}}</td>
+							</tr>
+							<tr>
+								<td>Email</td>
+								<td>:</td>
+								<td>{{usr.email}}</td>
+							</tr>
+							<tr>
+								<td>Phone Number</td>
+								<td>:</td>
+								<td>{%if usr.personaldata.phonenum != None %}{{usr.personaldata.phonenum}}{%endif%}</td>
+							</tr>
+							<tr>
+								<td>Whatsapp Number</td>
+								<td>:</td>
+								<td>{%if usr.personaldata.nowa != None %}{{usr.personaldata.nowa}}{%endif%}</td>
+							</tr>
+							<tr>
+								<td>Address</td>
+								<td>:</td>
+								<td>{%if usr.personaldata.address %}{{usr.personaldata.address}}{%endif%}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			{%endblock%}
+		</main>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>

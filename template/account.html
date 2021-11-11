@@ -1,0 +1,154 @@
+{%extends 'dashboard.html'%}
+{%block title%}
+		<title>Account | LANDME</title>
+{%endblock%}
+		{%block active%}
+		<ul class="nav nav-pills flex-column mb-auto">			
+			<li>
+				<a href="{%url 'dashboard' usr.username%}" class="nav-link text-white ">
+					<i class="bi bi-speedometer2 me-2"></i>
+					Dashboard
+				</a>
+			</li>
+			<li>
+				<a href="{%url 'userads' usr.username%}" class="nav-link text-white">
+					<i class="bi bi-badge-ad me-2"></i>
+					Ads
+				</a>
+			</li>
+			<li>
+				<a href="{%url 'profilesetting' usr.username%}" class="nav-link text-white ">
+					<i class="bi bi-person me-2"></i>
+					Profile
+				</a>
+			</li>
+			<li>
+				<a href="{%url 'personal' usr.username%}" class="nav-link text-white">
+					<i class="bi bi-person-lines-fill me-2"></i>
+					Personal Data
+				</a>
+			</li>
+			<li>
+				<a href="{%url 'account' usr.username%}" class="nav-link text-white active">
+					<i class="bi bi-person-badge me-2"></i>
+					Account
+				</a>
+			</li>
+		</ul>
+		{%endblock%}
+		{%block content%}
+			<div class="mainContent p-5" style="width: 100vw">
+				<div class="card p-3 mb-4" style="width: 100%">
+					<div class="card-body">
+						<h5 class="card-title">Change Email</h5>
+						<hr class="my-3" />
+						<form method="POST">
+						    {%csrf_token%}
+							<div class="mb-1">
+								<label for="exampleFormControlInput1" class="form-label"
+									><b>New Email</b></label
+								>
+								<input
+									type="email"
+									class="form-control w-50"
+									id="exampleFormControlInput1"
+									placeholder="email@domain.com"
+									name="email"
+								/>
+							</div>
+							<!-- <div class="mb-4 fw-lighten text-muted">
+								Email will change when you click on the verification link sent
+								to your new email.
+							</div> -->
+							<button
+								type="submit"
+								class="btn text-white"
+								style="background-color: #1b1a17"
+								name="email"
+							>
+								Change Email
+							</button>
+						</form>
+					</div>
+				</div>
+				<div class="card p-3" style="width: 100%">
+					<div class="card-body">
+						<h5 class="card-title">Change Password</h5>
+						<hr class="my-3" />
+						<div class="alert alert-warning" role="alert">
+							Fill in if you want to change the password.
+						</div>
+						<form method="POST">
+						    {%csrf_token%}
+							<div class="mb-4">
+								<label for="Password" class="form-label"
+									><b>New Password</b></label
+								>
+								<div class="d-flex w-50">
+									<input
+										type="password"
+										class="form-control new-password"
+										id="Password"
+										placeholder="Enter new password"
+										name="newpassword"
+									/>
+									<a id="toggler1" class="btn toggler text-white"
+										><i class="bi bi-eye"></i
+									></a>
+								</div>
+							</div>
+							<div class="mb-4">
+								{%for x in messages%}
+								<h5 style="color: red;">{{x}}</h5>
+								{%endfor%}
+								<label for="exampleFormControlInput1" class="form-label"
+									><b>Confirm New Password</b></label
+								>
+								<div class="d-flex w-50">
+									<input
+										type="password"
+										class="form-control new-password"
+										id="ConfirmPassword"
+										placeholder="Confirm password"
+										name="repassword"
+									/>
+									<a id="toggler2" class="btn toggler text-white"
+										><i class="bi bi-eye"></i
+									></a>
+								</div>
+							</div>
+							<button
+								type="submit"
+								class="btn text-white"
+								style="background-color: #1b1a17"
+								name="password"
+							>
+								Save Password
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		<script>
+			var password = document.getElementById("Password");
+			var confirmPassword = document.getElementById("ConfirmPassword");
+			var toggler1 = document.getElementById("toggler1");
+			var toggler2 = document.getElementById("toggler2");
+
+			showHidePassword = (x) => {
+				console.log(x);
+				if (x.type == "password") {
+					x.setAttribute("type", "text");
+				} else {
+					x.setAttribute("type", "password");
+				}
+			};
+
+			toggler1.addEventListener("click", function () {
+				showHidePassword(password);
+			});
+			toggler2.addEventListener("click", function () {
+				showHidePassword(confirmPassword);
+			});
+		</script>
+{%endblock%}

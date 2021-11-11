@@ -1,0 +1,83 @@
+{%extends 'dashboard.html'%}
+{%block title%}
+<title>Ads | LANDME</title>
+{%endblock%}
+{%block active%}
+<ul class="nav nav-pills flex-column mb-auto">			
+	<li>
+		<a href="{%url 'dashboard' usr.username%}" class="nav-link text-white ">
+			<i class="bi bi-speedometer2 me-2"></i>
+			Dashboard
+		</a>
+	</li>
+	<li>
+		<a href="{%url 'userads' usr.username%}" class="nav-link text-white active">
+			<i class="bi bi-badge-ad me-2"></i>
+			Ads
+		</a>
+	</li>
+	<li>
+		<a href="{%url 'profilesetting' usr.username%}" class="nav-link text-white">
+			<i class="bi bi-person me-2"></i>
+			Profile
+		</a>
+	</li>
+	<li>
+		<a href="{%url 'personal' usr.username%}" class="nav-link text-white">
+			<i class="bi bi-person-lines-fill me-2"></i>
+			Personal Data
+		</a>
+	</li>
+	<li>
+		<a href="{%url 'account' usr.username%}" class="nav-link text-white">
+			<i class="bi bi-person-badge me-2"></i>
+			Account
+		</a>
+	</li>
+</ul>
+{%endblock%}
+{%block content%}
+<div class="mainContent p-5" style="width: 100vw">
+				<div class="card p-3 mb-4" style="width: 100%">
+					<div class="card-body">
+						<h5 class="card-title">Ads</h5>
+						<hr class="my-3" />
+						<a
+							href="/upload"
+							class="btn text-white mb-4"
+							style="background-color: #1b1a17"
+							>Add Ads<i class="bi bi-plus ms-2"></i
+						></a>
+						<table class="table table-striped">
+							<thead class="text-center">
+								<th>No</th>
+								<th>Judul</th>
+								<th>Luas Tanah</th>
+								<th>Harga/meter</th>
+								<th>Lokasi</th>
+								<th>Action</th>
+							</thead>
+							{%for x in item%}
+							<tr>
+								<td>{{forloop.counter}}</td>
+								<td>{{x.title}}</td>
+								<td>None</td>
+								<td>{{x.harga}}</td>
+								<td>{{x.lokasi}}</td>
+								<td class="text-center">
+									<a href="{%url 'update' x.id%}" class="me-2 text-primary"
+										><i class="bi bi-pencil-fill me-1"></i>Edit</a
+									>
+									<!-- <i class="bi bi-trash-fill me-1"></i>
+									<input class="text-danger" type='submit' value='DELETE' name="delete"/>  -->
+									<a href="{% url 'delete-item' x.id %}" class="text-danger"
+										><i class="bi bi-trash-fill me-1"></i>Delete</a
+									>
+								</td>
+							</tr>
+							{%endfor%}
+						</table>
+					</div>
+				</div>
+			</div>
+{%endblock%}
