@@ -2,7 +2,7 @@
 How To Run:
 1.Install Python (Python3)
 2.Install pip
-3.Install PiL (use pip isntall):
+3.Install PiL (use pip install):
   pip install Django==3.2.7
   pip install django-cleanup==5.2.0
   pip install mysql-connector-python==8.0.26
