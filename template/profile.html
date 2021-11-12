@@ -94,7 +94,7 @@
 									class="form-control w-50"
 									id="Fullname"
 									placeholder="Fullname"
-									value="{{user.profile.fullname}}"
+									value="{%if user.profile.fullname != None%}{{user.profile.fullname}}{%else%}{%endif%}"
 									name="fullname"
 								/>
 							</div>
@@ -135,7 +135,7 @@
 									class="form-control w-50"
 									id="Headline"
 									placeholder="Example: Web Designer at PT. AAA"
-									value="{{user.profile.headline}}"
+									value="{%if user.profile.headline != None%}{{user.profile.headline}}{%else%}{%endif%}"
 									name="headline"
 									/>
 							</div>
