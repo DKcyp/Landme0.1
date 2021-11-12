@@ -37,7 +37,4 @@
     * Beta Release
     
 ## Authors
-
-DK and contact info
-
-IG. [@dk.dikacyp](https://www.instagram.com/dk.dikacyp/)
+NP
