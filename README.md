@@ -32,7 +32,7 @@
 
 * 0.1
     * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
+    * See [commit change](https://github.com/DKcyp/Landme0.1/commit/42b4dc76e9aa394813454da65fceb5182fda1554) or See [release history](https://github.com/DKcyp/Landme0.1/releases/tag/Beta-0.1)
 * 0.0
     * Beta Release
     
