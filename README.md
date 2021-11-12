@@ -20,7 +20,7 @@
     pip install Pillow==8.3.2
     ```
 ### Executing program
-* Download and extract repo
+* Download and extract Landme code
 * import landmedb.sql and run mysql
 * open cmd:
   * go to landme files ```(cd to directory of landme or where you extract)```
