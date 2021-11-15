@@ -252,7 +252,7 @@ def profilesetting(request, uss):
         headline = request.POST['headline']
         bio = request.POST['bio']
         profilepic = request.FILES.get('profilepic', False)
-        if usernamex == "" == fullname and headline == "" == bio:
+        if usernamex != "" != fullname and headline != "" != bio:
             if user.username != usernamex:
                 if User.objects.filter(username=usernamex).exists():
                         messages.info(request, 'Username Already Use')
