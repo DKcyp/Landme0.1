@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -236,12 +237,12 @@
 									<tr>
 										<td width="100px">Luas Tanah</td>
 										<td width="10px">:</td>
-										<td>isi</td>
+										<td>{{x.luas|intcomma}} m</td>
 									</tr>
 									<tr>
 										<td>Harga/meter</td>
 										<td>:</td>
-										<td>{{x.harga}}</td>
+										<td>Rp {{x.harga|intcomma}}/m</td>
 									</tr>
 									<tr>
 										<td>Lokasi</td>
@@ -349,12 +350,12 @@
 											<tr>
 												<td width="160px">Luas Tanah</td>
 												<td width="10px">:</td>
-												<td>{{x.luas}}</td>
+												<td>{{x.luas|intcomma}} m</td>
 											</tr>
 											<tr>
 												<td>Harga/meter</td>
 												<td>:</td>
-												<td>{{x.harga}}</td>
+												<td>Rp {{x.harga|intcomma}}</td>
 											</tr>
 											<tr>
 												<td>Lokasi</td>
