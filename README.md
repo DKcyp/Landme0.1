@@ -1,6 +1,7 @@
 # Landme
 ## Getting Started
 ### Installing
+* Install mysql
 * Install Python (Python3)
 * Install pip
   ```
@@ -50,6 +51,7 @@ NP
 ![alt None](https://github.com/DKcyp/Landme0.1/blob/main/webviewimg/Home2.PNG?raw=true)
 #### DetailAds Page
 ![alt None](https://github.com/DKcyp/Landme0.1/blob/main/webviewimg/DetailAds.PNG?raw=true)
+![alt None](https://github.com/DKcyp/Landme0.1/blob/main/webviewimg/DetailAds2.PNG?raw=true)
 #### Dashboard Page
 ![alt None](https://github.com/DKcyp/Landme0.1/blob/main/webviewimg/Dashboard.PNG?raw=true)
 #### UserAds Page
@@ -68,3 +70,6 @@ NP
 ![alt None](https://github.com/DKcyp/Landme0.1/blob/main/webviewimg/About.PNG?raw=true)
 #### Contact Page
 ![alt None](https://github.com/DKcyp/Landme0.1/blob/main/webviewimg/Contact.PNG?raw=true)
+#### User Page
+![alt None](https://github.com/DKcyp/Landme0.1/blob/main/webviewimg/User.PNG?raw=true)
+![alt None](https://github.com/DKcyp/Landme0.1/blob/main/webviewimg/User2.PNG?raw=true)
