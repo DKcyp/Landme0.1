@@ -1,4 +1,5 @@
 {%extends 'dashboard.html'%}
+{% load humanize %}
 {%block title%}
 <title>Ads | LANDME</title>
 {%endblock%}
@@ -61,8 +62,8 @@
 							<tr>
 								<td>{{forloop.counter}}</td>
 								<td>{{x.title}}</td>
-								<td>None</td>
-								<td>{{x.harga}}</td>
+								<td>{{x.luas|intcomma}} m</td>
+								<td>Rp {{x.harga|intcomma}}</td>
 								<td>{{x.lokasi}}</td>
 								<td class="text-center">
 									<a href="{%url 'update' x.id%}" class="me-2 text-primary"
